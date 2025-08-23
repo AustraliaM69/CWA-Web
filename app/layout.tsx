@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ThemeToggle from "./components/ThemeToggle";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,21 +28,21 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-            <header className="w-full flex items-center justify-between py-4 px-8 bg-gray-800 text-white mb-8">
+            <header className="w-full flex items-center justify-between py-4 px-8 bg-gray-800 dark:bg-gray-900 text-white dark:text-gray-100 mb-8 transition-colors duration-200">
               <div className="text-xl font-bold">Samuel Tulipano</div>
               <nav>
                 <ul className="flex space-x-6">
-                  <li><a href="/" className="hover:underline">Home</a></li>
-                  <li><a href="/about" className="hover:underline">About</a></li>
-                  <li><a href="/escaperoom" className="hover:underline">Escape Room</a></li>
-                  <li><a href="/codingraces" className="hover:underline">Coding Races</a></li>
-                  <li><a href="/courtroom" className="hover:underline">Court Room</a></li>
-
+                  <li><a href="/" className="hover:underline transition-colors">Home</a></li>
+                  <li><a href="/about" className="hover:underline transition-colors">About</a></li>
+                  <li><a href="/escaperoom" className="hover:underline transition-colors">Escape Room</a></li>
+                  <li><a href="/codingraces" className="hover:underline transition-colors">Coding Races</a></li>
+                  <li><a href="/courtroom" className="hover:underline transition-colors">Court Room</a></li>
                 </ul>
               </nav>
+              <ThemeToggle />
             </header>
         {children}
-        <footer className="w-full text-center py-4 bg-gray-100 text-gray-700 mt-8">
+        <footer className="w-full text-center py-4 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 mt-8">
           © 2025 CWA ASSIGNMENT 1 | Samuel Tulipano | 22298158 | 18/08/2025
         </footer>
       </body>
