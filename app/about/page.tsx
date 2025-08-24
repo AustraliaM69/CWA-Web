@@ -10,7 +10,7 @@ export default function AboutPage() {
         width="480"
         controls
       >
-        <source src="null" type="null" />
+        <source src="howtouse.mp4" type="video/mp4" />
       </video>
     </main>
     );

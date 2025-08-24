@@ -36,7 +36,35 @@ export default function Home() {
 
   const generateOutput = () => {
     const content = tabs[activeTab].content;
-    const htmlOutput = `<div>${content}</div>`;
+    
+    // Convert text to HTML with basic formatting
+    let htmlContent = content
+      // Convert line breaks to <br> tags
+      .replace(/\n/g, '<br>')
+      // Convert numbered lists (1. 2. 3. etc.)
+      .replace(/^(\d+\.\s+)(.+)$/gm, '<li>$2</li>')
+      // Wrap consecutive <li> tags in <ol>
+      .replace(/(<li>.*<\/li>)+/g, (match) => `<ol>${match}</ol>`)
+      // Convert bullet points (* or -)
+      .replace(/^[\*\-]\s+(.+)$/gm, '<li>$1</li>')
+      // Wrap consecutive bullet <li> tags in <ul>
+      .replace(/(<li>.*<\/li>)+/g, (match) => `<ul>${match}</ul>`)
+      // Bold text between **
+      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+      // Italic text between *
+      .replace(/\*(.*?)\*/g, '<em>$1</em>');
+    
+    const htmlOutput = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated HTML</title>
+</head>
+<body>
+    <div style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 20px; background-color: #f9f9f9; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">${htmlContent}</div>
+</body>
+</html>`;
     return htmlOutput;
   };
 
@@ -70,7 +98,9 @@ export default function Home() {
         <div className="flex flex-col items-start">
           <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Display</h3>
           <Box sx={{ width: 400 }} className='bg-white dark:bg-gray-800 p-4 rounded'>
-            <div className="w-full h-32 p-2 border rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600">
+            <div 
+              className="w-full h-32 p-2 border rounded bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 border-gray-300 dark:border-gray-600 overflow-auto whitespace-pre-wrap"
+            >
               {tabs[activeTab].content || 'No content to display'}
             </div>
           </Box>
