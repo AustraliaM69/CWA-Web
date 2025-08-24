@@ -10,7 +10,8 @@ export default function AboutPage() {
         width="480"
         controls
       >
-        <source src="howtouse.mp4" type="video/mp4" />
+        <source src="/howtouse.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
     </main>
     );
