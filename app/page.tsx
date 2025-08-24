@@ -47,8 +47,8 @@ export default function Home() {
 
                <div className="flex gap-8 p-8 justify-center">
         <div className="flex flex-col items-start">
-          <h3 className="text-lg font-bold mb-2 text-gray-900 dark:text-gray-100">Editor</h3>
-          <Box sx={{ width: 400 }} className='bg-white dark:bg-gray-800 p-4 rounded'>
+          <h3 className="text-lg font-bold mb-2 text-gray-900 dark:!text-gray-100">Editor</h3>
+          <Box sx={{ width: 400 }} className='bg-white dark:!bg-gray-800 p-4 rounded'>
           <Tabs value={activeTab} onChange={handleTabChange} variant="scrollable"scrollButtons="auto">
             {tabs.map((tab, idx) => (
               <Tab key={idx} label={tab.label} />

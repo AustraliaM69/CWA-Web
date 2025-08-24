@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ThemeToggle from "./components/ThemeToggle";
+import HamburgerMenu from "./components/HamburgerMenu";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,7 +31,7 @@ export default function RootLayout({
       >
             <header className="w-full flex items-center justify-between py-4 px-8 bg-gray-800 dark:bg-gray-900 text-white dark:text-gray-100 mb-8 transition-colors duration-200">
               <div className="text-xl font-bold">Samuel Tulipano</div>
-              <nav>
+              <nav className="hidden md:block">
                 <ul className="flex space-x-6">
                   <li><a href="/" className="hover:underline transition-colors">Home</a></li>
                   <li><a href="/about" className="hover:underline transition-colors">About</a></li>
@@ -39,7 +40,10 @@ export default function RootLayout({
                   <li><a href="/courtroom" className="hover:underline transition-colors">Court Room</a></li>
                 </ul>
               </nav>
-              <ThemeToggle />
+              <div className="flex items-center space-x-4">
+                <ThemeToggle />
+                <HamburgerMenu />
+              </div>
             </header>
         {children}
         <footer className="w-full text-center py-4 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 mt-8">

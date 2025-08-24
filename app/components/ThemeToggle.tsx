@@ -10,9 +10,10 @@ export default function ThemeToggle() {
     if (savedTheme) {
       setTheme(savedTheme);
     } else {
-      // Default to light mode if no saved theme
       setTheme('light');
     }
+    // Force remove dark class on initial load
+    document.documentElement.classList.remove('dark');
   }, []);
 
   useEffect(() => {
@@ -25,14 +26,10 @@ export default function ThemeToggle() {
     localStorage.setItem('theme', theme);
   }, [theme]);
 
-  // Initialize theme on mount
-  useEffect(() => {
-    // Remove dark class on initial load to ensure we start in light mode
-    document.documentElement.classList.remove('dark');
-  }, []);
-
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    console.log('Current theme:', theme);
+    console.log('Dark class present:', document.documentElement.classList.contains('dark'));
   };
 
   return (
