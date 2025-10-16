@@ -6,3 +6,15 @@ datasource db {
   provider = "sqlite"
   url      = env("DATABASE_URL")
 }
+
+model GameSession {
+  id              Int      @id @default(autoincrement())
+  playerName      String?
+  completed       Boolean  @default(false)
+  timeUsed        Int
+  stagesCompleted Int      @default(0)
+  score           Int?
+  createdAt       DateTime @default(now())
+  
+  @@map("game_sessions")
+}
