@@ -42,6 +42,9 @@ next-env.d.ts
 dev.db
 prisma/dev.db
 
+# prisma generated
+app/generated/
+
 # jmeter
 apache-jmeter-*
 *.jmx
