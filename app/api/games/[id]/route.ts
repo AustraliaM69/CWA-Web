@@ -3,9 +3,10 @@ import { prisma } from '../../../lib/prisma';
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     const game = await prisma.gameSession.findUnique({
       where: { id: parseInt(params.id) },
     });
@@ -22,9 +23,10 @@ export async function GET(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: { id: string } }
+  context: { params: Promise<{ id: string }> }
 ) {
   try {
+    const params = await context.params;
     await prisma.gameSession.delete({
       where: { id: parseInt(params.id) },
     });
