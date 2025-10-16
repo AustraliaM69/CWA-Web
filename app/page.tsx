@@ -1,6 +1,6 @@
 
 'use client';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
@@ -38,7 +38,7 @@ export default function Home() {
     const content = tabs[activeTab].content;
     
     // Convert text to HTML with basic formatting
-    let htmlContent = content
+    const htmlContent = content
       // Convert line breaks to <br> tags
       .replace(/\n/g, '<br>')
       // Convert numbered lists (1. 2. 3. etc.)

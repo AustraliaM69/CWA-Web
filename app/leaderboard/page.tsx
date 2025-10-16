@@ -26,9 +26,9 @@ export default function Leaderboard() {
         const data = await response.json();
         setGames(data);
       }
-    } catch (error) {
-      console.error('Failed to fetch games');
-    } finally {
+      } catch {
+        console.error('Failed to fetch games');
+      } finally {
       setLoading(false);
     }
   };
@@ -67,7 +67,7 @@ export default function Leaderboard() {
                         {game.playerName || 'Anonymous'}
                       </div>
                       <div className="text-gray-300 text-sm">
-                        {game.completed ? '✅ ESCAPED' : '❌ Failed'} - 
+                        {game.completed ? 'ESCAPED' : 'Failed'} - 
                         Stages: {game.stagesCompleted}/7 - 
                         Time: {Math.floor(game.timeUsed / 60)}:{(game.timeUsed % 60).toString().padStart(2, '0')}
                       </div>
