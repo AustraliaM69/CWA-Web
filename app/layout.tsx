@@ -36,6 +36,7 @@ export default function RootLayout({
                   <li><a href="/" className="hover:underline transition-colors">Home</a></li>
                   <li><a href="/about" className="hover:underline transition-colors">About</a></li>
                   <li><a href="/escaperoom" className="hover:underline transition-colors">Escape Room</a></li>
+                  <li><a href="/leaderboard" className="hover:underline transition-colors">Leaderboard</a></li>
                   <li><a href="/codingraces" className="hover:underline transition-colors">Coding Races</a></li>
                   <li><a href="/courtroom" className="hover:underline transition-colors">Court Room</a></li>
                 </ul>

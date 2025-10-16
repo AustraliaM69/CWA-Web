@@ -26,6 +26,7 @@ export default function HamburgerMenu() {
             <a href="/" className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">Home</a>
             <a href="/about" className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">About</a>
             <a href="/escaperoom" className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">Escape Room</a>
+            <a href="/leaderboard" className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">Leaderboard</a>
             <a href="/codingraces" className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">Coding Races</a>
             <a href="/courtroom" className="block px-4 py-2 text-gray-900 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-gray-700">Court Room</a>
           </div>
