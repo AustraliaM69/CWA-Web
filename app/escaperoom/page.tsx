@@ -21,6 +21,7 @@ export default function EscapeRoom() {
   const [playerName, setPlayerName] = useState('');
   const [startTime, setStartTime] = useState(0);
   const [saved, setSaved] = useState(false);
+  const [correctAnswers, setCorrectAnswers] = useState(0);
 
   const handleTimeUp = () => {
     setGameOver(true);
@@ -39,6 +40,7 @@ export default function EscapeRoom() {
     setStage5Answer('');
     setStage6Answer('');
     setStage7Code('');
+    setCorrectAnswers(0);
   };
 
 const skipStage=()=>{
@@ -53,6 +55,7 @@ const skipStage=()=>{
   const checkStage1 = () => {
     if (stage1Answer.trim() === '6') {
       alert('correct!');
+      setCorrectAnswers(correctAnswers + 1);
       setCurrentStage(2);
     } else {
       alert('wrong answer try again');
@@ -62,6 +65,7 @@ const skipStage=()=>{
   const checkStage2 = () => {
     if (stage2Answer.toLowerCase().trim() === 'semicolon') {
       alert('nice! next stage');
+      setCorrectAnswers(correctAnswers + 1);
       setCurrentStage(3);
     } else {
       alert('nope');
@@ -76,6 +80,7 @@ const skipStage=()=>{
       if (Array.isArray(result) && result.length === 11 && 
           result[0] === 0 && result[10] === 10) {
         alert('good job!');
+        setCorrectAnswers(correctAnswers + 1);
         setCurrentStage(4);
       } else {
         alert('not quite');
@@ -88,6 +93,7 @@ const skipStage=()=>{
   const checkStage4 = () => {
     if (stage4Answer.trim() === 'JSON.stringify(data)') {
       alert('correct');
+      setCorrectAnswers(correctAnswers + 1);
       setCurrentStage(5);
     } else {
       alert('wrong');
@@ -97,6 +103,7 @@ const skipStage=()=>{
 const checkStage5 = () => {
   if(stage5Answer.toLowerCase().includes('for') || stage5Answer.toLowerCase().includes('while')){
     alert('yes!');
+    setCorrectAnswers(correctAnswers + 1);
     setCurrentStage(6);
   }else{
     alert('no');
@@ -106,6 +113,7 @@ const checkStage5 = () => {
   const checkStage6 = () => {
     if (stage6Answer.trim() === 'string') {
       alert('right!');
+      setCorrectAnswers(correctAnswers + 1);
       setCurrentStage(7);
     } else {
       alert('nope');
@@ -116,6 +124,7 @@ const checkStage5 = () => {
     try{
       const f = new Function(stage7Code + '\nreturn reverseString("hello");')();
       if(f === 'olleh'){
+        setCorrectAnswers(correctAnswers + 1);
         setGameOver(true);
         setWon(true);
       }else{
@@ -206,8 +215,8 @@ const checkStage5 = () => {
           playerName: playerName || 'Anonymous',
           completed: won,
           timeUsed,
-          stagesCompleted: currentStage - 1,
-          score: won ? Math.max(1000 - timeUsed, 100) : currentStage * 100
+          stagesCompleted: correctAnswers,
+          score: won ? Math.max(1000 - timeUsed, 100) : correctAnswers * 100
         })
       });
       
@@ -233,7 +242,7 @@ const checkStage5 = () => {
             {won ? 'nice job you solved everything' : 'you didnt make it out'}
           </p>
           <p className="text-gray-300 mb-4">
-            Completed: {currentStage - 1}/7 stages
+            Correct Answers: {correctAnswers}/7
           </p>
           
           <div style={{display:'flex',gap:'10px'}}>
